@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:login_page/providers/coaches_data.dart';
 
 class IntroPage1 extends StatelessWidget {
+  const IntroPage1({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +24,7 @@ class IntroPage1 extends StatelessWidget {
     child: Consumer<Coach>(
       builder: (context, coach, _) {
         return Text(
-          'Welcome to our app\n Coach ${coach.fname} ${coach.lname}',
+          'Welcome to our\n Fitness Coach App',
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontSize: 30,

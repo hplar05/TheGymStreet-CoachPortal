@@ -1142,6 +1142,7 @@ class _CoachseeWorkoutlibState extends State<CoachseeWorkoutlib> {
                   final reps = workout['reps'];
                   final sets = workout['sets'];
                   final time = workout['time'];
+                  final isDone = workout['isDone'];
                   return Card(
                     color: Colors.white,
                     margin:
@@ -1153,8 +1154,13 @@ class _CoachseeWorkoutlibState extends State<CoachseeWorkoutlib> {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          if (isDone == true)
+                            const Icon(Icons.check, color: Colors.green)
+                          else
+                            const SizedBox.shrink(),
                           Image.network(
                             workout['imageUrl'] ?? '',
                             height: 100,
