@@ -143,7 +143,7 @@ Widget buildProfileImage() => CircleAvatar(
       '${context.watch<Coach>().fname.substring(0, 1)}${context.watch<Coach>().lname.substring(0, 1)}',
       style: const TextStyle(
         color: Colors.white,
-        fontSize: 50,
+        fontSize: 60,
         fontWeight: FontWeight.bold,
       ),
     ),

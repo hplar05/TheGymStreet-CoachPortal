@@ -49,12 +49,12 @@ class _CoachHomeState extends State<CoachHome> {
                       ),
                       CircleAvatar(
                         radius: 53,
-                        backgroundColor: Color.fromARGB(255, 181, 48, 4),
+                        backgroundColor: const Color.fromARGB(255, 181, 48, 4),
                         child: Text(
                           '${context.watch<Coach>().fname.substring(0, 1)}${context.watch<Coach>().lname.substring(0, 1)}',
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 28,
+                            fontSize: 45,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

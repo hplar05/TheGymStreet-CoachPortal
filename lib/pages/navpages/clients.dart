@@ -91,7 +91,7 @@ class _CoachClientsState extends State<CoachClients> {
           : RefreshIndicator(
               onRefresh: fetchData,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
