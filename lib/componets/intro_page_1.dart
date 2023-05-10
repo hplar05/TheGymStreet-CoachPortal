@@ -14,32 +14,30 @@ class IntroPage1 extends StatelessWidget {
           Center(
             child: Image.asset(
               'lib/images/gif1.gif',
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context).size.width / 1,
+              height: MediaQuery.of(context).size.height / 1,
             ),
           ),
           Positioned(
-    top: 170,
-    left: 0,
-    right: 0,
-    child: Consumer<Coach>(
-      builder: (context, coach, _) {
-        return Text(
-          'Welcome to our\n Fitness Coach App',
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+            top: 160,
+            left: 0,
+            right: 0,
+            child: Consumer<Coach>(
+              builder: (context, coach, _) {
+                return const Text(
+                  'Welcome to the ultimate\nFitness Coach App!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                );
+              },
+            ),
           ),
-        );
-      },
-    ),
-  ),
-
         ],
       ),
     );
   }
 }
-
-

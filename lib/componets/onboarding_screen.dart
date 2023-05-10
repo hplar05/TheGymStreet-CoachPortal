@@ -8,6 +8,8 @@ import 'package:login_page/providers/coaches_data.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import 'intro_page_4.dart';
+
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
 
@@ -28,13 +30,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             controller: _controller,
             onPageChanged: (index) {
               setState(() {
-                onLastPage = (index == 2);
+                onLastPage = (index == 3);
               });
             },
             children: [
               IntroPage1(),
               IntroPage2(),
               IntroPage3(),
+              IntroPage4(),
             ],
           ),
           Container(
@@ -44,20 +47,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      _controller.jumpToPage(2);
+                      _controller.jumpToPage(3);
                     },
                     child: Text(
                       'SKIP',
                       style: TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.w600,
-                                color: Colors.grey[700],
+                        color: Colors.grey[700],
                       ),
                     ),
                   ),
                   SmoothPageIndicator(
                     controller: _controller,
-                    count: 3,
+                    count: 4,
                   ),
                   onLastPage
                       ? GestureDetector(
@@ -71,8 +74,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             'DONE',
                             style: TextStyle(
                               fontSize: 16.0,
-                            fontWeight: FontWeight.w600,
-                                color: Colors.grey[700],
+                              fontWeight: FontWeight.w600,
+                              color: Colors.grey[700],
                             ),
                           ),
                         )
@@ -87,8 +90,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             'NEXT',
                             style: TextStyle(
                               fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
-                                color: Colors.grey[700],
+                              fontWeight: FontWeight.w600,
+                              color: Colors.grey[700],
                             ),
                           ),
                         ),

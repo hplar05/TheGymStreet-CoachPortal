@@ -9,9 +9,9 @@ class IntroPage2 extends StatelessWidget {
       color: Colors.orange[100],
       child: Stack(
         children: [
-        Center(
+          Center(
             child: Image.asset(
-              'lib/images/gif2.gif',
+              'lib/images/3.gif',
               width: MediaQuery.of(context).size.width,
             ),
           ),
@@ -20,7 +20,7 @@ class IntroPage2 extends StatelessWidget {
             left: 0,
             right: 0,
             child: Text(
-              'Help your clients achieve their goals\n by providing them with appropriate\n workouts and sessions.',
+              'Help your clients achieve their\ngoals and healthy body.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 25,

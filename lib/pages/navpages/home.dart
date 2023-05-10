@@ -35,7 +35,7 @@ class _CoachHomeState extends State<CoachHome> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 17),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -53,7 +53,7 @@ class _CoachHomeState extends State<CoachHome> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 0),
                 const Text(
                   'Welcome to Coach Dashboard',
                   style: TextStyle(

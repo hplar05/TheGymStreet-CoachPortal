@@ -791,9 +791,12 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
               Text('Session ID: ${widget.id}'),
               const SizedBox(height: 16.0),
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Calories',
-                  border: OutlineInputBorder(),
+                  prefixIcon: const Icon(Icons.local_fire_department),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
                 initialValue: widget.proteins.toString(),
                 validator: (value) {
@@ -809,9 +812,12 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
               ),
               const SizedBox(height: 16.0),
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Proteins',
-                  border: OutlineInputBorder(),
+                  prefixIcon: const Icon(Icons.food_bank),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
                 initialValue: widget.calories.toString(),
                 validator: (value) {
@@ -827,9 +833,12 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
               ),
               const SizedBox(height: 16.0),
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Fats',
-                  border: OutlineInputBorder(),
+                  prefixIcon: const Icon(Icons.fastfood_outlined),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
                 initialValue: widget.fats.toString(),
                 validator: (value) {
@@ -1443,9 +1452,12 @@ class _ClientUpdateWorkoutState extends State<ClientUpdateWorkout> {
               Text('Workout ID: ${widget.workoutId}'),
               const SizedBox(height: 16.0),
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Reps',
-                  border: OutlineInputBorder(),
+                  prefixIcon: const Icon(Icons.repeat),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -1460,9 +1472,12 @@ class _ClientUpdateWorkoutState extends State<ClientUpdateWorkout> {
               ),
               const SizedBox(height: 16.0),
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Sets',
-                  border: OutlineInputBorder(),
+                  prefixIcon: const Icon(Icons.fitness_center_outlined),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
                 maxLines: null,
                 validator: (value) {
@@ -1478,9 +1493,12 @@ class _ClientUpdateWorkoutState extends State<ClientUpdateWorkout> {
               ),
               const SizedBox(height: 16.0),
               TextFormField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Time',
-                  border: OutlineInputBorder(),
+                  prefixIcon: const Icon(Icons.timer),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
                 maxLines: null,
                 validator: (value) {
@@ -2105,8 +2123,7 @@ class _AddWorkoutState extends State<AddWorkout> {
                                     controller: repsController,
                                     decoration: InputDecoration(
                                       labelText: 'Reps',
-                                      prefixIcon: const Icon(
-                                          Icons.fitness_center,
+                                      prefixIcon: const Icon(Icons.repeat,
                                           color: Color(0xFF004aad)),
                                       labelStyle: const TextStyle(fontSize: 13),
                                       enabledBorder: OutlineInputBorder(
@@ -2137,7 +2154,7 @@ class _AddWorkoutState extends State<AddWorkout> {
                                     decoration: InputDecoration(
                                       labelText: 'Sets',
                                       prefixIcon: const Icon(
-                                          Icons.accessibility,
+                                          Icons.fitness_center,
                                           color: Color(0xFF004aad)),
                                       labelStyle: const TextStyle(fontSize: 13),
                                       enabledBorder: OutlineInputBorder(
