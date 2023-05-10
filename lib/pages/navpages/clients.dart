@@ -39,7 +39,7 @@ class _CoachClientsState extends State<CoachClients> {
           clientsData = List<Map<String, dynamic>>.from(response.data['data'])
               .map((client) => {
                     'clientName':
-                        "${client['firstName'] ?? ""} ${client['middleName'] ?? ""} ${client['lastName'] ?? ""}",
+                        "${client['firstName'] ?? ""} ${client['lastName'] ?? ""}",
                     'workoutPreference': client['workoutPreference'] ?? "",
                     'workoutLevel': client['workoutLevel'] ?? "",
                     'goal': client['goal'] ?? "",
@@ -107,32 +107,39 @@ class _CoachClientsState extends State<CoachClients> {
   }
 
   Widget _buildList(Map<String, dynamic>? data, BuildContext context) {
-    if (data == null) return const SizedBox.shrink();
-    String clientName = data['clientName'];
-    String workoutPreference = data['workoutPreference'];
-    String workoutLevel = data['workoutLevel'];
-    String goal = data['goal'];
-    String availability = data['availability'];
+  if (data == null) return const SizedBox.shrink();
+  String clientName = data['clientName'];
+  String workoutPreference = data['workoutPreference'];
+  String workoutLevel = data['workoutLevel'];
+  String goal = data['goal'];
+  String availability = data['availability'];
 
-    return Card(
-      elevation: 2.0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(45.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
-              child: Image.asset(
-                'lib/images/client.png', // Update image path
-                height: 65.0,
-                width: 70.0,
-                fit: BoxFit.cover,
+  String initials = (clientName.isNotEmpty)
+      ? clientName.trim().split(' ').map((name) => name[0]).take(2).join().toUpperCase()
+      : '';
+
+  return Card(
+    elevation: 2.0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15.0),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            radius: 30.0,
+            backgroundColor: Color.fromARGB(255, 16, 63, 215),
+            child: Text(
+              initials,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20.0,
               ),
             ),
+          ),
             const SizedBox(width: 16.0),
             Expanded(
               child: Column(

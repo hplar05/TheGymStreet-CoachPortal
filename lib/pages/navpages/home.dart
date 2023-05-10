@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:colorize_text_avatar/colorize_text_avatar.dart';
 import 'package:login_page/providers/coaches_data.dart';
 import 'package:provider/provider.dart';
 import '../../providers/clients_data.dart';
@@ -16,9 +17,8 @@ class _CoachHomeState extends State<CoachHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      body: Column(
-        children: [
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        body: Column(children: [
           Container(
             padding: const EdgeInsets.all(15),
             decoration: const BoxDecoration(
@@ -37,22 +37,29 @@ class _CoachHomeState extends State<CoachHome> {
               children: [
                 const SizedBox(height: 17),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Hi, ${context.watch<Coach>().fname} ${context.watch<Coach>().mname} ${context.watch<Coach>().lname}",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Hi, ${context.watch<Coach>().fname} ${context.watch<Coach>().mname} ${context.watch<Coach>().lname}",
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const CircleAvatar(
-                      radius: 53,
-                      backgroundImage: AssetImage('lib/images/coach.png'),
-                    ),
-                  ],
-                ),
+                      CircleAvatar(
+                        radius: 53,
+                        backgroundColor: Color.fromARGB(255, 181, 48, 4),
+                        child: Text(
+                          '${context.watch<Coach>().fname.substring(0, 1)}${context.watch<Coach>().lname.substring(0, 1)}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ]),
                 const SizedBox(height: 20),
                 const Text(
                   'Welcome to Coach Dashboard',
@@ -108,8 +115,7 @@ class _CoachHomeState extends State<CoachHome> {
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                      height: 10), // Move text up by changing the height
+                  SizedBox(height: 10), // Move text up by changing the height
                   Text(
                     'Clients Feedbacks',
                     style: TextStyle(
