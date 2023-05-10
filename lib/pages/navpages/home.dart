@@ -37,29 +37,22 @@ class _CoachHomeState extends State<CoachHome> {
               children: [
                 const SizedBox(height: 17),
                 Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Hi, ${context.watch<Coach>().fname} ${context.watch<Coach>().mname} ${context.watch<Coach>().lname}",
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Hi, ${context.watch<Coach>().fname} ${context.watch<Coach>().mname} ${context.watch<Coach>().lname}",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
                       ),
-                      CircleAvatar(
-                        radius: 53,
-                        backgroundColor: const Color.fromARGB(255, 181, 48, 4),
-                        child: Text(
-                          '${context.watch<Coach>().fname.substring(0, 1)}${context.watch<Coach>().lname.substring(0, 1)}',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 45,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ]),
+                    ),
+                    const CircleAvatar(
+                      radius: 53,
+                      backgroundImage: AssetImage('lib/images/coach.png'),
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 20),
                 const Text(
                   'Welcome to Coach Dashboard',

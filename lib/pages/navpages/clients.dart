@@ -40,11 +40,14 @@ class _CoachClientsState extends State<CoachClients> {
               .map((client) => {
                     'clientName':
                         "${client['firstName'] ?? ""} ${client['lastName'] ?? ""}",
+                    'age': client['age'] ?? "",
                     'workoutPreference': client['workoutPreference'] ?? "",
                     'workoutLevel': client['workoutLevel'] ?? "",
                     'goal': client['goal'] ?? "",
                     'availability': client['availability'] ?? "",
                     'id': client['id'],
+                    'notes': client['notes'] ?? "",
+                    'gender': client['gender'] ?? "",
                   })
               .toList();
           isLoading = false;
@@ -107,40 +110,51 @@ class _CoachClientsState extends State<CoachClients> {
   }
 
   Widget _buildList(Map<String, dynamic>? data, BuildContext context) {
-  if (data == null) return const SizedBox.shrink();
-  String clientName = data['clientName'];
-  String workoutPreference = data['workoutPreference'];
-  String workoutLevel = data['workoutLevel'];
-  String goal = data['goal'];
-  String availability = data['availability'];
+    if (data == null) {
+      return const SizedBox.shrink();
+    }
+    String clientName = data['clientName'] ?? '';
+    String workoutPreference = data['workoutPreference'] ?? '';
+    String workoutLevel = data['workoutLevel'] ?? '';
+    String goal = data['goal'] ?? '';
+    String availability = data['availability'] ?? '';
+    int age = data['age'] ?? '';
+    String notes = data['notes'] ?? '';
+    String gender = data['gender'] ?? '';
 
-  String initials = (clientName.isNotEmpty)
-      ? clientName.trim().split(' ').map((name) => name[0]).take(2).join().toUpperCase()
-      : '';
+    String initials = (clientName.isNotEmpty)
+        ? clientName
+            .trim()
+            .split(' ')
+            .map((name) => name[0])
+            .take(2)
+            .join()
+            .toUpperCase()
+        : '';
 
-  return Card(
-    elevation: 2.0,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(15.0),
-    ),
-    child: Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CircleAvatar(
-            radius: 30.0,
-            backgroundColor: Color.fromARGB(255, 16, 63, 215),
-            child: Text(
-              initials,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0,
+    return Card(
+      elevation: 2.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CircleAvatar(
+              radius: 30.0,
+              backgroundColor: const Color.fromARGB(255, 16, 63, 215),
+              child: Text(
+                initials,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                ),
               ),
             ),
-          ),
-            const SizedBox(width: 16.0),
+            const SizedBox(width: 15.0),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,14 +163,54 @@ class _CoachClientsState extends State<CoachClients> {
                     clientName,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
+                      fontSize: 15.0,
                     ),
                   ),
                   const SizedBox(height: 18.0),
                   RichText(
                     text: TextSpan(
                       style: const TextStyle(
-                        fontSize: 14.0,
+                        fontSize: 13.0,
+                        color: Colors.black87,
+                      ),
+                      children: [
+                        const TextSpan(
+                          text: 'Age: ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '$age',
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 5.0),
+                  RichText(
+                    text: TextSpan(
+                      style: const TextStyle(
+                        fontSize: 13.0,
+                        color: Colors.black87,
+                      ),
+                      children: [
+                        const TextSpan(
+                          text: 'Gender: ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '$gender',
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 5.0),
+                  RichText(
+                    text: TextSpan(
+                      style: const TextStyle(
+                        fontSize: 13.0,
                         color: Colors.black87,
                       ),
                       children: [
@@ -176,7 +230,7 @@ class _CoachClientsState extends State<CoachClients> {
                   RichText(
                     text: TextSpan(
                       style: const TextStyle(
-                        fontSize: 14.0,
+                        fontSize: 13.0,
                         color: Colors.black87,
                       ),
                       children: [
@@ -196,7 +250,7 @@ class _CoachClientsState extends State<CoachClients> {
                   RichText(
                     text: TextSpan(
                       style: const TextStyle(
-                        fontSize: 14.0,
+                        fontSize: 13.0,
                         color: Colors.black87,
                       ),
                       children: [
@@ -216,7 +270,7 @@ class _CoachClientsState extends State<CoachClients> {
                   RichText(
                     text: TextSpan(
                       style: const TextStyle(
-                        fontSize: 14.0,
+                        fontSize: 13.0,
                         color: Colors.black87,
                       ),
                       children: [
@@ -228,6 +282,26 @@ class _CoachClientsState extends State<CoachClients> {
                         ),
                         TextSpan(
                           text: '$availability',
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 5.0),
+                  RichText(
+                    text: TextSpan(
+                      style: const TextStyle(
+                        fontSize: 13.0,
+                        color: Colors.black87,
+                      ),
+                      children: [
+                        const TextSpan(
+                          text: 'Notes: ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '$notes',
                         ),
                       ],
                     ),
@@ -365,7 +439,16 @@ class _SessionPageState extends State<SessionPage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: const Color(0xFF004aad),
-        title: const Text('Sessions'),
+        title: const Text(
+          'Sessions',
+          style: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        centerTitle: true,
+        elevation: 0,
       ),
       body: RefreshIndicator(
           onRefresh: fetchSessionData,
@@ -939,7 +1022,7 @@ class _AddSessionPageState extends State<AddSessionPage> {
                           height: 150.0,
                           width: 400.0,
                         ),
-                        const SizedBox(height: 50),
+                        const SizedBox(height: 30),
                         Row(
                           children: [
                             Flexible(
@@ -992,87 +1075,118 @@ class _AddSessionPageState extends State<AddSessionPage> {
                         const SizedBox(height: 10),
                         TextField(
                           controller: titleController,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             labelText: 'Session Title',
-                            prefixIcon:
-                                Icon(Icons.title, color: Color(0xFF004aad)),
-                            labelStyle: TextStyle(fontSize: 18),
+                            prefixIcon: const Icon(Icons.title,
+                                color: Color(0xFF004aad)),
+                            labelStyle: const TextStyle(fontSize: 18),
+                            filled: true,
+                            fillColor: Colors.grey[200],
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                           style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.black), // add a custom text style
+                              fontSize: 20, color: Colors.black),
                           onChanged: (value) {},
                         ),
                         const SizedBox(height: 20),
                         TextField(
                           controller: descriptionController,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             labelText: 'Session Description',
-                            prefixIcon: Icon(Icons.description,
+                            prefixIcon: const Icon(Icons.description,
                                 color: Color(0xFF004aad)),
-                            labelStyle: TextStyle(fontSize: 18),
+                            labelStyle: const TextStyle(fontSize: 18),
+                            filled: true,
+                            fillColor: Colors.grey[200],
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                           style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.black), // add a custom text style
+                              fontSize: 20, color: Colors.black),
                           onChanged: (value) {},
                         ),
                         const SizedBox(height: 20),
                         TextField(
                           controller: caloriesController,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             labelText: 'Calories',
-                            prefixIcon: Icon(Icons.local_fire_department,
+                            prefixIcon: const Icon(Icons.local_fire_department,
                                 color: Color(0xFF004aad)),
-                            labelStyle: TextStyle(fontSize: 18),
+                            labelStyle: const TextStyle(fontSize: 18),
+                            filled: true,
+                            fillColor: Colors.grey[200],
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                           style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.black), // add a custom text style
+                              fontSize: 20, color: Colors.black),
                           keyboardType: TextInputType.number,
                           onChanged: (value) {},
                         ),
                         const SizedBox(height: 20),
                         TextField(
                           controller: proteinsController,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             labelText: 'Protein',
-                            prefixIcon:
-                                Icon(Icons.food_bank, color: Color(0xFF004aad)),
-                            labelStyle: TextStyle(fontSize: 18),
+                            prefixIcon: const Icon(Icons.food_bank,
+                                color: Color(0xFF004aad)),
+                            labelStyle: const TextStyle(fontSize: 18),
+                            filled: true,
+                            fillColor: Colors.grey[200],
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                           style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.black), // add a custom text style
+                              fontSize: 20, color: Colors.black),
                           keyboardType: TextInputType.number,
                           onChanged: (value) {},
                         ),
                         const SizedBox(height: 20),
                         TextField(
                           controller: fatsController,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             labelText: 'Fats',
-                            prefixIcon:
-                                Icon(Icons.fastfood, color: Color(0xFF004aad)),
-                            labelStyle: TextStyle(fontSize: 18),
+                            prefixIcon: const Icon(Icons.fastfood,
+                                color: Color(0xFF004aad)),
+                            labelStyle: const TextStyle(fontSize: 18),
+                            filled: true,
+                            fillColor: Colors.grey[200],
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                           style: const TextStyle(
-                              fontSize: 20,
-                              color: // add a custom text style
-                                  Colors.black),
+                              fontSize: 20, color: Colors.black),
                           keyboardType: TextInputType.number,
                           onChanged: (value) {},
                         ),
                         const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () {
-                            //Provider.of<Client>(context, listen: false)
-                            //      .clearProfile();
                             _submitForm();
                             isSessionCreated = true;
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xff004AAD),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 32, vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            textStyle: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           child: const Text('Create Session'),
                         ),
@@ -1131,7 +1245,16 @@ class _CoachseeWorkoutlibState extends State<CoachseeWorkoutlib> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: const Color(0xFF004aad),
-        title: const Text('Workouts'),
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          'Workouts',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: RefreshIndicator(
         onRefresh: fetchWorkoutsData,
@@ -1980,11 +2103,22 @@ class _AddWorkoutState extends State<AddWorkout> {
                                       horizontal: 8.0),
                                   child: TextField(
                                     controller: repsController,
-                                    decoration: const InputDecoration(
+                                    decoration: InputDecoration(
                                       labelText: 'Reps',
-                                      prefixIcon: Icon(Icons.fitness_center,
+                                      prefixIcon: const Icon(
+                                          Icons.fitness_center,
                                           color: Color(0xFF004aad)),
-                                      labelStyle: TextStyle(fontSize: 18),
+                                      labelStyle: const TextStyle(fontSize: 13),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            color: Color(0xFF004aad)),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            color: Color(0xFF004aad), width: 2),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
                                     ),
                                     style: const TextStyle(
                                         fontSize: 20, color: Colors.black),
@@ -2000,11 +2134,22 @@ class _AddWorkoutState extends State<AddWorkout> {
                                       horizontal: 8.0),
                                   child: TextField(
                                     controller: setsController,
-                                    decoration: const InputDecoration(
+                                    decoration: InputDecoration(
                                       labelText: 'Sets',
-                                      prefixIcon: Icon(Icons.accessibility,
+                                      prefixIcon: const Icon(
+                                          Icons.accessibility,
                                           color: Color(0xFF004aad)),
-                                      labelStyle: TextStyle(fontSize: 18),
+                                      labelStyle: const TextStyle(fontSize: 13),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            color: Color(0xFF004aad)),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            color: Color(0xFF004aad), width: 2),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
                                     ),
                                     style: const TextStyle(
                                         fontSize: 20, color: Colors.black),
@@ -2020,11 +2165,21 @@ class _AddWorkoutState extends State<AddWorkout> {
                                       horizontal: 8.0),
                                   child: TextField(
                                     controller: timeController,
-                                    decoration: const InputDecoration(
+                                    decoration: InputDecoration(
                                       labelText: 'Time',
-                                      prefixIcon: Icon(Icons.lock_clock,
+                                      prefixIcon: const Icon(Icons.lock_clock,
                                           color: Color(0xFF004aad)),
-                                      labelStyle: TextStyle(fontSize: 18),
+                                      labelStyle: const TextStyle(fontSize: 13),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            color: Color(0xFF004aad)),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                            color: Color(0xFF004aad), width: 2),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
                                     ),
                                     style: const TextStyle(
                                         fontSize: 20, color: Colors.black),
@@ -2036,6 +2191,7 @@ class _AddWorkoutState extends State<AddWorkout> {
                               const SizedBox(height: 20),
                             ],
                           ),
+
                           const SizedBox(height: 20),
                           ElevatedButton(
                             onPressed: () {
@@ -2043,9 +2199,22 @@ class _AddWorkoutState extends State<AddWorkout> {
                               isWorkoutCreated = true;
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xff004AAD),
+                              primary: const Color(0xff004AAD),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 32, vertical: 16),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              elevation: 2.0,
                             ),
-                            child: const Text('Add Selected Workout'),
+                            child: const Text(
+                              'Add Selected Workout',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
                         ],
                       ),

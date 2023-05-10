@@ -136,18 +136,11 @@ class _CoachAccountState extends State<CoachAccount> {
         ),
       );
 
-Widget buildProfileImage() => CircleAvatar(
-    radius: profileHeight / 2,
-    backgroundColor: const Color.fromARGB(255, 181, 48, 4),
-    child: Text(
-      '${context.watch<Coach>().fname.substring(0, 1)}${context.watch<Coach>().lname.substring(0, 1)}',
-      style: const TextStyle(
-        color: Colors.white,
-        fontSize: 60,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  );
+ Widget buildProfileImage() => CircleAvatar(
+        radius: profileHeight / 2,
+        backgroundColor: Colors.grey.shade800,
+        backgroundImage: const AssetImage("lib/images/coach.png"),
+      );
 
   Widget buildContent() => Column(
         children: [
