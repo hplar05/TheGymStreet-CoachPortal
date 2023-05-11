@@ -163,10 +163,10 @@ class _CoachClientsState extends State<CoachClients> {
                     clientName,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 15.0,
+                      fontSize: 16.0,
                     ),
                   ),
-                  const SizedBox(height: 18.0),
+                  const SizedBox(height: 10.0),
                   RichText(
                     text: TextSpan(
                       style: const TextStyle(
@@ -442,8 +442,6 @@ class _SessionPageState extends State<SessionPage> {
         title: const Text(
           'Sessions',
           style: TextStyle(
-            fontSize: 24.0,
-            fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
         ),
@@ -468,12 +466,12 @@ class _SessionPageState extends State<SessionPage> {
                       margin: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 30),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(15),
                         side: BorderSide(color: Colors.grey.shade300),
                       ),
                       elevation: 2,
                       child: Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(25.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -629,6 +627,8 @@ class _SessionPageState extends State<SessionPage> {
                                           return ClientUpdateSession(
                                               id: session['id'],
                                               title: session['title'],
+                                              description:
+                                                  session['description'],
                                               calories: session['calories'],
                                               proteins: session['proteins'],
                                               fats: session['fats']);
@@ -755,9 +755,11 @@ class ClientUpdateSession extends StatefulWidget {
   final int fats;
   final int id;
   final String title;
+  final String description;
   const ClientUpdateSession(
       {super.key,
       required this.id,
+      required this.description,
       required this.calories,
       required this.proteins,
       required this.fats,
@@ -773,6 +775,8 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
   late String _calories;
   late String _proteins;
   late String _fats;
+  late String _title;
+  late String _description;
 
   @override
   Widget build(BuildContext context) {
@@ -782,14 +786,56 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
         title: Text(widget.title),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(13.0),
         child: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Session ID: ${widget.id}'),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 7.0),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Title',
+                  prefixIcon: const Icon(Icons.title),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  labelStyle: TextStyle(fontSize: 13.0),
+                ),
+                initialValue: widget.title.toString(),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter the proteins';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  _title = value;
+                },
+              ),
+              const SizedBox(height: 7.0),
+              TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Description',
+                  prefixIcon: const Icon(Icons.description),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  labelStyle: TextStyle(fontSize: 13.0),
+                ),
+                initialValue: widget.description.toString(),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter the proteins';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  _description = value;
+                },
+              ),
+              const SizedBox(height: 7.0),
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Calories',
@@ -797,6 +843,7 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
+                  labelStyle: TextStyle(fontSize: 13.0),
                 ),
                 initialValue: widget.proteins.toString(),
                 validator: (value) {
@@ -810,7 +857,7 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
                 },
                 keyboardType: TextInputType.number,
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 7.0),
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Proteins',
@@ -818,6 +865,7 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
+                  labelStyle: TextStyle(fontSize: 13.0),
                 ),
                 initialValue: widget.calories.toString(),
                 validator: (value) {
@@ -831,7 +879,7 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
                 },
                 keyboardType: TextInputType.number,
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 7.0),
               TextFormField(
                 decoration: InputDecoration(
                   labelText: 'Fats',
@@ -839,6 +887,7 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
+                  labelStyle: TextStyle(fontSize: 13.0),
                 ),
                 initialValue: widget.fats.toString(),
                 validator: (value) {
@@ -852,7 +901,7 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
                 },
                 keyboardType: TextInputType.number,
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 7.0),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
@@ -865,7 +914,7 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
                 child: const Text(
                   'Save Changes',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 13,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -888,6 +937,8 @@ class _ClientUpdateSessionState extends State<ClientUpdateSession> {
           'calories': _calories,
           'proteins': _proteins,
           'fats': _fats,
+          'description': _description,
+          'title': _title,
         },
       );
       if (response.statusCode == 200) {
