@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:login_page/providers/coaches_data.dart';
 import 'package:login_page/providers/session_data.dart';
@@ -125,6 +127,21 @@ class _CoachClientsState extends State<CoachClients> {
     String gender = data['gender'] ?? '';
     int weight = data['weight'] ?? '';
     int height = data['height'] ?? '';
+    double bmi = (weight / pow(height / 100, 2));
+    String bmiResult = bmi.toStringAsFixed(1);
+    String strValue = "3.14";
+double doubleValue = double.parse(strValue);
+String _getWeightStatus(double bmi) {
+  if (bmi < 18.5) {
+    return 'Underweight';
+  } else if (bmi >= 18.5 && bmi < 25.0) {
+    return 'Healthy Weight';
+  } else if (bmi >= 25.0 && bmi < 30.0) {
+    return 'Overweight';
+  } else {
+    return 'Obesity';
+  }
+}
 
     String initials = (clientName.isNotEmpty)
         ? clientName
@@ -210,7 +227,7 @@ class _CoachClientsState extends State<CoachClients> {
                       ],
                     ),
                   ),
-                    const SizedBox(height: 5.0),
+                  const SizedBox(height: 5.0),
                   RichText(
                     text: TextSpan(
                       style: const TextStyle(
@@ -230,7 +247,46 @@ class _CoachClientsState extends State<CoachClients> {
                       ],
                     ),
                   ),
-                    const SizedBox(height: 5.0),
+              const SizedBox(height: 5.0),
+RichText(
+  text: TextSpan(
+    style: const TextStyle(
+      fontSize: 13.0,
+      color: Colors.black87,
+    ),
+    children: [
+      const TextSpan(
+        text: 'Bmi: ',
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      TextSpan(
+        text: '$bmiResult ',
+      ),
+    ],
+  ),
+),
+const SizedBox(height: 5.0),
+RichText(
+  text: TextSpan(
+    style: const TextStyle(
+      fontSize: 13.0,
+      color: Colors.black87,
+    ),
+    children: [
+      const TextSpan(
+        text: 'Weight Status: ',
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    TextSpan(
+        text: '${_getWeightStatus(double.parse(bmiResult))}',
+      ),
+    ],
+  ),
+),              const SizedBox(height: 5.0),
                   RichText(
                     text: TextSpan(
                       style: const TextStyle(
@@ -1443,7 +1499,7 @@ class _CoachseeWorkoutlibState extends State<CoachseeWorkoutlib> {
                                     const SizedBox(width: 0),
                                     Expanded(
                                       child: Text(
-                                        'Time: ${workout['time'] ?? ''}s',
+                                        'Rest: ${workout['time'] ?? ''}s',
                                         style: const TextStyle(
                                           fontSize: 14,
                                         ),
@@ -1854,7 +1910,7 @@ class _CoachClientWorkoutState extends State<CoachClientWorkout> {
                                 title: Text(
                                   jsonList?[index]['title'] ?? '',
                                   style: const TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Montserrat',
                                   ),
@@ -1865,7 +1921,7 @@ class _CoachClientWorkoutState extends State<CoachClientWorkout> {
                                     const SizedBox(height: 4),
                                     Text(
                                       (jsonList?[index]['description'] ?? ''),
-                                      maxLines: 13,
+                                      maxLines: 12,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
                                         fontSize: 14,
