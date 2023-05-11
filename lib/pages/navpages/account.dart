@@ -149,7 +149,7 @@ class _CoachAccountState extends State<CoachAccount> {
           ),
           Text(
             context.watch<Coach>().email,
-            style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 5,

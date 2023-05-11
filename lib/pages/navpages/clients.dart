@@ -46,6 +46,8 @@ class _CoachClientsState extends State<CoachClients> {
                     'goal': client['goal'] ?? "",
                     'availability': client['availability'] ?? "",
                     'id': client['id'],
+                    'weight': client['weight'] ?? "",
+                    'height': client['height'] ?? "",
                     'notes': client['notes'] ?? "",
                     'gender': client['gender'] ?? "",
                   })
@@ -121,6 +123,8 @@ class _CoachClientsState extends State<CoachClients> {
     int age = data['age'] ?? '';
     String notes = data['notes'] ?? '';
     String gender = data['gender'] ?? '';
+    int weight = data['weight'] ?? '';
+    int height = data['height'] ?? '';
 
     String initials = (clientName.isNotEmpty)
         ? clientName
@@ -187,6 +191,46 @@ class _CoachClientsState extends State<CoachClients> {
                     ),
                   ),
                   const SizedBox(height: 5.0),
+                  RichText(
+                    text: TextSpan(
+                      style: const TextStyle(
+                        fontSize: 13.0,
+                        color: Colors.black87,
+                      ),
+                      children: [
+                        const TextSpan(
+                          text: 'Weight: ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '$weight',
+                        ),
+                      ],
+                    ),
+                  ),
+                    const SizedBox(height: 5.0),
+                  RichText(
+                    text: TextSpan(
+                      style: const TextStyle(
+                        fontSize: 13.0,
+                        color: Colors.black87,
+                      ),
+                      children: [
+                        const TextSpan(
+                          text: 'Height: ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '$height',
+                        ),
+                      ],
+                    ),
+                  ),
+                    const SizedBox(height: 5.0),
                   RichText(
                     text: TextSpan(
                       style: const TextStyle(
@@ -1777,7 +1821,7 @@ class _CoachClientWorkoutState extends State<CoachClientWorkout> {
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(),
-                        itemExtent: 150,
+                        itemExtent: 100,
                         itemBuilder: (BuildContext context, int index) {
                           // ignore: unused_local_variable
                           final workoutId =
@@ -1810,7 +1854,7 @@ class _CoachClientWorkoutState extends State<CoachClientWorkout> {
                                 title: Text(
                                   jsonList?[index]['title'] ?? '',
                                   style: const TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Montserrat',
                                   ),
@@ -1824,7 +1868,7 @@ class _CoachClientWorkoutState extends State<CoachClientWorkout> {
                                       maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         color: Colors.grey,
                                         fontFamily:
                                             'Montserrat', // Use a custom font

@@ -172,7 +172,7 @@ class _CoachWorkoutlibState extends State<CoachWorkoutlib> {
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(),
-                        itemExtent: 130,
+                        itemExtent: 100,
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
                               padding: const EdgeInsets.symmetric(
@@ -202,7 +202,7 @@ class _CoachWorkoutlibState extends State<CoachWorkoutlib> {
                                   title: Text(
                                     jsonList?[index]['title'] ?? '',
                                     style: const TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'Montserrat',
                                     ),
@@ -217,7 +217,7 @@ class _CoachWorkoutlibState extends State<CoachWorkoutlib> {
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style: const TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 13,
                                           color: Colors.grey,
                                           fontFamily:
                                               'Montserrat', // Use a custom font
