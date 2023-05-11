@@ -172,7 +172,7 @@ class _CoachWorkoutlibState extends State<CoachWorkoutlib> {
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(),
-                        itemExtent: 100,
+                        itemExtent: 97,
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
                               padding: const EdgeInsets.symmetric(
@@ -202,7 +202,7 @@ class _CoachWorkoutlibState extends State<CoachWorkoutlib> {
                                   title: Text(
                                     jsonList?[index]['title'] ?? '',
                                     style: const TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'Montserrat',
                                     ),

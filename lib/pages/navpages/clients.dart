@@ -1821,7 +1821,7 @@ class _CoachClientWorkoutState extends State<CoachClientWorkout> {
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(),
-                        itemExtent: 100,
+                        itemExtent: 97,
                         itemBuilder: (BuildContext context, int index) {
                           // ignore: unused_local_variable
                           final workoutId =
@@ -1865,7 +1865,7 @@ class _CoachClientWorkoutState extends State<CoachClientWorkout> {
                                     const SizedBox(height: 4),
                                     Text(
                                       (jsonList?[index]['description'] ?? ''),
-                                      maxLines: 3,
+                                      maxLines: 13,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
                                         fontSize: 14,
