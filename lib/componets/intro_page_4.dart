@@ -16,7 +16,7 @@ class IntroPage4 extends StatelessWidget {
             ),
           ),
           const Positioned(
-            top: 110, // Adjust the position as needed
+            top: 125, // Adjust the position as needed
             left: 0,
             right: 0,
             child: Text(

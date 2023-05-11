@@ -19,13 +19,13 @@ class IntroPage1 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 160,
+            top: 170,
             left: 0,
             right: 0,
             child: Consumer<Coach>(
               builder: (context, coach, _) {
                 return const Text(
-                  'Welcome to the ultimate\nFitness Coach App!',
+                  'Welcome to the GYM STREET\nFitness Coach App!',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 25,

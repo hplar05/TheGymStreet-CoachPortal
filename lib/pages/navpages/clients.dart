@@ -205,7 +205,7 @@ class _CoachClientsState extends State<CoachClients> {
                           ),
                         ),
                         TextSpan(
-                          text: '$weight',
+                          text: '$weight kg',
                         ),
                       ],
                     ),
@@ -225,7 +225,7 @@ class _CoachClientsState extends State<CoachClients> {
                           ),
                         ),
                         TextSpan(
-                          text: '$height',
+                          text: '$height cm',
                         ),
                       ],
                     ),
