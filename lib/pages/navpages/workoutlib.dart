@@ -202,7 +202,7 @@ class _CoachWorkoutlibState extends State<CoachWorkoutlib> {
                                   title: Text(
                                     jsonList?[index]['title'] ?? '',
                                     style: const TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 13,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'Montserrat',
                                     ),

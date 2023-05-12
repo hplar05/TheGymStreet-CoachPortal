@@ -1910,7 +1910,7 @@ class _CoachClientWorkoutState extends State<CoachClientWorkout> {
                                 title: Text(
                                   jsonList?[index]['title'] ?? '',
                                   style: const TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 13,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Montserrat',
                                   ),
@@ -1918,7 +1918,7 @@ class _CoachClientWorkoutState extends State<CoachClientWorkout> {
                                 subtitle: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const SizedBox(height: 4),
+                                    const SizedBox(height: 2),
                                     Text(
                                       (jsonList?[index]['description'] ?? ''),
                                       maxLines: 12,

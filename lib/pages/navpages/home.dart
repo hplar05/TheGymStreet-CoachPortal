@@ -43,7 +43,7 @@ class _CoachHomeState extends State<CoachHome> {
                       "Hi, ${context.watch<Coach>().fname} ${context.watch<Coach>().mname} ${context.watch<Coach>().lname}",
                       style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 22,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -83,13 +83,13 @@ class _CoachHomeState extends State<CoachHome> {
                 children: [
                   _buildDashboardItem(
                     'Total Clients',
-                    '3',
+                    '1',
                     Icons.person_outline,
                     const Color(0xFF004aad),
                   ),
                   _buildDashboardItem(
                     'Workouts',
-                    '18',
+                    '415',
                     Icons.fitness_center,
                     Colors.blue,
                   ),
