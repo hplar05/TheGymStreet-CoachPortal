@@ -282,7 +282,7 @@ RichText(
         ),
       ),
     TextSpan(
-        text: '${_getWeightStatus(double.parse(bmiResult))}',
+        text: '${_getWeightStatus(double.parse(bmiResult))} ',
       ),
     ],
   ),
@@ -301,7 +301,7 @@ RichText(
                           ),
                         ),
                         TextSpan(
-                          text: '$gender',
+                          text: '$gender ',
                         ),
                       ],
                     ),
@@ -321,7 +321,7 @@ RichText(
                           ),
                         ),
                         TextSpan(
-                          text: '$workoutLevel',
+                          text: '$workoutLevel ',
                         ),
                       ],
                     ),
@@ -341,7 +341,7 @@ RichText(
                           ),
                         ),
                         TextSpan(
-                          text: '$workoutPreference',
+                          text: '$workoutPreference ',
                         ),
                       ],
                     ),
@@ -381,7 +381,7 @@ RichText(
                           ),
                         ),
                         TextSpan(
-                          text: '$availability',
+                          text: '$availability ',
                         ),
                       ],
                     ),
@@ -401,7 +401,7 @@ RichText(
                           ),
                         ),
                         TextSpan(
-                          text: '$notes',
+                          text: '$notes ',
                         ),
                       ],
                     ),
@@ -571,23 +571,23 @@ class _SessionPageState extends State<SessionPage> {
                       ),
                       elevation: 2,
                       child: Padding(
-                        padding: const EdgeInsets.all(25.0),
+                        padding: const EdgeInsets.all(15.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
                               'Session Title',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black87,
                               ),
                             ),
-                            const SizedBox(height: 8),
+                            const SizedBox(height: 5),
                             Text(
                               session['title'],
                               style: TextStyle(
-                                fontSize: 17,
+                                fontSize: 15,
                                 color: Colors.grey[700],
                               ),
                             ),
@@ -595,20 +595,20 @@ class _SessionPageState extends State<SessionPage> {
                             const Text(
                               'Session Description',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black87,
                               ),
                             ),
-                            const SizedBox(height: 14),
+                            const SizedBox(height: 5),
                             Text(
                               session['description'],
                               style: TextStyle(
-                                fontSize: 17,
+                                fontSize: 15,
                                 color: Colors.grey[700],
                               ),
                             ),
-                            const SizedBox(height: 40),
+                            const SizedBox(height: 25),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -627,7 +627,7 @@ class _SessionPageState extends State<SessionPage> {
                                     Text(
                                       session['calories'].toString(),
                                       style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 15,
                                         color: Colors.grey[700],
                                       ),
                                     ),
@@ -648,7 +648,7 @@ class _SessionPageState extends State<SessionPage> {
                                     Text(
                                       session['proteins'].toString(),
                                       style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 15,
                                         color: Colors.grey[700],
                                       ),
                                     ),
@@ -669,7 +669,7 @@ class _SessionPageState extends State<SessionPage> {
                                     Text(
                                       session['fats'].toString(),
                                       style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 15,
                                         color: Colors.grey[700],
                                       ),
                                     ),
@@ -705,7 +705,7 @@ class _SessionPageState extends State<SessionPage> {
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor:
-                                            const Color(0xff004AAD),
+                                            const Color.fromARGB(255, 7, 155, 11),
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
