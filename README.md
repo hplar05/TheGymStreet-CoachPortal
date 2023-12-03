@@ -1,4 +1,4 @@
-# The GYM STREET COACH 
+# The GYM STREET COACH PORTAL
 
 A new Flutter project.
 
